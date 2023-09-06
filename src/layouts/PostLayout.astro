@@ -1,0 +1,55 @@
+---
+
+import Layout from "./Layout.astro";
+
+interface Props {
+	frontmatter: {
+		title: string;
+		slug: string;
+		thumbnail: string;
+		author: string;
+		date: string;
+	};
+}
+
+const { frontmatter } = Astro.props as Props;
+
+---
+
+<Layout title={frontmatter.title}>
+	<div class="max-w-screen-md mx-auto">
+		<h1 class="text-4xl text-[#842986] font-bold mt-16 text-center">
+			{frontmatter.title}
+		</h1>
+
+		<div
+			class="flex justify-center items-center divide-x divide-gray-300 mt-5"
+		>
+		
+				<p
+					class="text-sm group-hover:underline group-hover:underline-offset-2">
+				
+					{frontmatter.author}
+				</p>
+			
+			<div class="flex items-center space-x-1 px-2">
+
+				<p class="text-sm">{frontmatter.date}</p>
+			</div>
+		</div>
+		<img
+			src={frontmatter.thumbnail}
+			alt=""
+			class="aspect-video object-cover rounded-lg shadow-lg mt-7"
+		/>
+		<div class="mt-4 content">
+			<slot />
+		</div> 
+	</div>
+</Layout>
+
+<style is:global>
+	.content p {
+		@apply mt-4 text-gray-800;
+	}
+</style>

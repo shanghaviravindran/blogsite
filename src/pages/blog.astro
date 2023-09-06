@@ -1,6 +1,6 @@
 ---
-import Card from '../components/Card.astro';
-import Layout from '../layouts/Layout.astro';
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
 
 interface Frontmatter {
 	title: string;
@@ -12,13 +12,9 @@ interface Frontmatter {
 const posts = await Astro.glob<Frontmatter>("./post/*.md");
 ---
 
-<Layout title="Welcome to Blog Site.">
+  <Layout title="Blog"> 
 	<main class="mx-auto max-w-screen-lg">
-		<h1 class="text-4xl text-[#a160a2] font-bold mt-24">
-			Welcome to Blog Site!
-		</h1>
-
-	<!-- add paragraph in the amin page-->
+		<h1 class="text-4xl text-[#7e2080] font-bold mt-24">Blog</h1>
 		<p class="mt-2.5 text-gray-600">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut est
 			eget felis hendrerit pharetra. Aliquam ac dolor a est lacinia
@@ -26,21 +22,28 @@ const posts = await Astro.glob<Frontmatter>("./post/*.md");
 			quam.
 		</p>
 
-		<!-- add  image -->
-		<img src="/hero.avif" alt="" class="mt-4 rounded-lg shadow-lg" />
-
-		<h2 class="text-3xl text-[#691f6a] font-bold mt-24">Our Latest Posts</h2>
-		<div class="lg:grid lg:grid-cols-3 gap-4 mt-5 space-y-5 lg:space-y-0">
-		
-			{posts.map(post=>(
+		<div
+			class="grid grid-cols-3 gap-4 mt-12 lg:grid lg:grid-cols-3 space-y-5 lg:space-y-0"
+		>
+	
+	{posts.map(post=>(
 				<Card 
 				title={post.frontmatter.title} 	
-				description={post.rawContent().slice(0, 200)} 
+				description={post.rawContent().slice(0, 200)}
 				href={`/post/${post.frontmatter.slug}`}
 				thumbnail={post.frontmatter.thumbnail}/>
-				))}
-				
-		</div>
-	</main>
-</Layout>
 
+	))}
+		</div>
+
+
+		
+
+	</main>
+
+
+
+      
+	
+      
+</Layout> 
